@@ -4,7 +4,9 @@ import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
-import {MyOwnCustomMaterialModule} from './own.module';
+import { MyOwnCustomMaterialModule } from './own.module';
+import { CuentaService } from './shared/cuenta/cuenta.service';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -14,9 +16,10 @@ import {MyOwnCustomMaterialModule} from './own.module';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    MyOwnCustomMaterialModule
+    MyOwnCustomMaterialModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [CuentaService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
