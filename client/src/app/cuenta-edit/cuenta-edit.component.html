@@ -1,0 +1,24 @@
+<mat-card>
+  <form #cuentaForm="ngForm" (ngSubmit)="save(cuentaForm.value)">
+    <mat-card-header>
+      <mat-card-title><h2>{{cuenta.aliasCbu ? 'Editar' : 'Agregar'}} Cuenta</h2></mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <input type="hidden" name="href" [(ngModel)]="cuenta.href">
+      <mat-form-field>
+        <input matInput placeholder="Alias CBU" [(ngModel)]="cuenta.aliasCbu" required name="aliasCbu" #aliasCbu>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="CBU" [(ngModel)]="cuenta.cbu" required name="cbu" #cbu>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Saldo" [(ngModel)]="cuenta.saldo" required name="saldo" #saldo>
+      </mat-form-field>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" type="submit" [disabled]="!cuentaForm.form.valid">Guardar</button>
+      <button mat-raised-button color="secondary" (click)="remove(cuenta.href)" *ngIf="cuenta.href" type="button">Borrar</button>
+      <a mat-button routerLink="/cuenta-list">Cancelar</a>
+    </mat-card-actions>
+  </form>
+</mat-card>
